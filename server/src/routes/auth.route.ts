@@ -8,7 +8,7 @@ export class AuthRoute {
     app.post(
       '/register',
       { schema: { body: RegisterSchema } },
-      AuthController.register,
+      AuthController.register
     )
   }
 }
