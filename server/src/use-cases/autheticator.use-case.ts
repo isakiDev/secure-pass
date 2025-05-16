@@ -1,6 +1,6 @@
 import { authenticator } from 'otplib'
 
-interface IOtPauth {
+interface GenerateOtpAuthParams {
   email: string
   appName: string
   secret: string
@@ -17,7 +17,7 @@ export class AuthenticatorUseCase {
     return isValid
   }
 
-  static generateOtpauth({ email, appName, secret }: IOtPauth) {
+  static generateOtpauth({ email, appName, secret }: GenerateOtpAuthParams) {
     const otpauth = authenticator.keyuri(email, appName, secret)
     return otpauth
   }
