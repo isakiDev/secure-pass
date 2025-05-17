@@ -1,14 +1,13 @@
+import { Router } from 'express'
 import { AuthController } from '../controllers/auth.controller.ts'
-import { LoginSchema } from '../schemas/login.schema.ts'
-import { RegisterSchema } from '../schemas/register.schema.ts'
 
 export class AuthRoute {
-  static routes(app: any) {
-    app.post('/login', { schema: { body: LoginSchema } }, AuthController.login)
-    app.post(
-      '/register',
-      { schema: { body: RegisterSchema } },
-      AuthController.register
-    )
+  static get routes() {
+    const router = Router()
+
+    router.post('/login', AuthController.login)
+    router.post('/register', AuthController.register)
+
+    return router
   }
 }

@@ -1,22 +1,27 @@
-import { AppRoute } from './routes/app.route.ts'
+import express, { Router } from 'express'
 
 interface Options {
   port: number
-  app: any
+  routes: Router
 }
 
-export class Server {
-  private readonly port: number
-  private readonly app: any
+export class Server implements Options {
+  public readonly app = express()
+
+  public readonly port: number
+  public readonly routes: Router
 
   constructor(options: Options) {
-    const { app, port } = options
-    this.app = app
+    const { routes, port } = options
+
+    this.routes = routes
     this.port = port
   }
 
   init() {
-    this.app.register(AppRoute.init)
+    //routes
+    this.app.use('/api/v1', this.routes)
+
     this.app.listen({ port: this.port })
   }
 }
