@@ -1,4 +1,4 @@
-import { authenticator } from 'otplib'
+import { type AuthenticatorService } from '../services/authenticator.service.ts'
 
 interface GenerateOtpAuthParams {
   email: string
@@ -7,18 +7,24 @@ interface GenerateOtpAuthParams {
 }
 
 export class AuthenticatorUseCase {
-  static get generateSecret() {
-    const secret = authenticator.generateSecret()
+  constructor(private readonly authenticatorService: AuthenticatorService) {}
+
+  get generateSecret() {
+    const secret = this.authenticatorService.generateSecret
     return secret
   }
 
-  static check({ token, secret }: { token: string; secret: string }) {
-    const isValid = authenticator.check(token, secret)
+  check({ token, secret }: { token: string; secret: string }) {
+    const isValid = this.authenticatorService.check({ token, secret })
     return isValid
   }
 
-  static generateOtpauth({ email, appName, secret }: GenerateOtpAuthParams) {
-    const otpauth = authenticator.keyuri(email, appName, secret)
+  generateOtpauth({ email, appName, secret }: GenerateOtpAuthParams) {
+    const otpauth = this.authenticatorService.generateOtpauth({
+      email,
+      appName,
+      secret,
+    })
     return otpauth
   }
 }
