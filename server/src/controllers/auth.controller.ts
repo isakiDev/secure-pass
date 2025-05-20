@@ -1,11 +1,19 @@
 import type { Request, Response } from 'express'
+import { AuthService } from '../services/auth.service.ts'
 
 export class AuthController {
-  static login(req: Request, res: Response) {
+  constructor(private readonly authService: AuthService) {}
+
+  login(req: Request, res: Response) {
     res.send({ msg: 'Login' })
   }
 
-  static register(req: Request, res: Response) {
+  register(req: Request, res: Response) {
+    // return this.authService.register()
+    const qr = this.authService.register()
+
+    console.log(qr)
+
     res.send({ msg: 'Register' })
   }
 }
