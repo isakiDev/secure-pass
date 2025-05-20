@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { AuthRoute } from './auth.route.ts'
+import { AuthRoute } from './auth.route'
 
 export class AppRoute {
   static get routes() {

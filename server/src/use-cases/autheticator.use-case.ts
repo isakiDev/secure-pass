@@ -1,4 +1,4 @@
-import { type AuthenticatorService } from '../services/authenticator.service.ts'
+import { type AuthenticatorService } from '../services/authenticator.service'
 
 interface GenerateOtpAuthParams {
   email: string

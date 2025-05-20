@@ -1,7 +1,5 @@
-import express from 'express'
-
-import { Server } from './server.ts'
-import { AppRoute } from './routes/app.route.ts'
+import { Server } from './server'
+import { AppRoute } from './routes/app.route'
 
 const port = 3000
 

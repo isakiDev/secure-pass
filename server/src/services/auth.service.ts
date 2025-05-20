@@ -1,7 +1,7 @@
-import { AuthenticatorUseCase } from '../use-cases/autheticator.use-case.ts'
-import { QrcodeUseCase } from '../use-cases/qrcode.use-case.ts'
-import { AuthenticatorService } from './authenticator.service.ts'
-import { QrcodeService } from './qrcode.service.ts'
+import { AuthenticatorUseCase } from '../use-cases/autheticator.use-case'
+import { QrcodeUseCase } from '../use-cases/qrcode.use-case'
+import { AuthenticatorService } from './authenticator.service'
+import { QrcodeService } from './qrcode.service'
 
 const authenticatorService = new AuthenticatorService()
 const authenticatorUseCase = new AuthenticatorUseCase(authenticatorService)

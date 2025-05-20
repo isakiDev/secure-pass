@@ -1,4 +1,4 @@
-import qrcode, { QRCodeStringType } from 'qrcode'
+import qrcode, { type QRCodeStringType } from 'qrcode'
 
 interface GenerateQrParams {
   otpauth: string
@@ -7,6 +7,8 @@ interface GenerateQrParams {
 
 export class QrcodeService {
   generateQr({ otpauth, type }: GenerateQrParams) {
-    return qrcode
+    return qrcode.toString(otpauth, { type }, (err, qr) => {
+      if (err) throw Error('Cannot generate QR')
+    })
   }
 }
